@@ -1,0 +1,18 @@
+{
+  "name": "simpleks",
+  "version": "1.0.0",
+  "description": "Tugas RO ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "kawe",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "javascript-lp-solver": "^0.4.24",
+    "simple-simplex": "^1.0.1"
+  }
+}

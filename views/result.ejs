@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <% for (let index = 0; index < tables.length; index++) { %>
+        <h1>Iterasi <%= index+1 %></h1>
+        <table class="table">
+          <thead>
+            <tr>
+            <% for (let index2 = 0; index2 < jml.length; index2++) { %>
+                <th scope="col">X<%= index2+1 %></th>    
+            <% } %>
+            <% for (let index2 = 0; index2 < jml_kendala.length; index2++) { %>
+              <th scope="col">S<%= index2+1 %></th>    
+          <% } %>
+              <th>Z</th>
+              <th>RHS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             
+            <% for (let index2 = 0; index2 < tables[index].length; index2++) { %>
+              <tr>
+                <% for (let a = 0; a < tables[index][index2].length; a++) { %>                             
+                  <th scope="col"><%= tables[index][index2][a] %></th>    
+               <% } %>
+            </tr>    
+           <% } %>
+            </tr>
+          </tbody>
+        </table>
+        <% } %>
+      </div>
+      
+
+      <!-- iterasi 1 < n > final -->
+
+
+      <div class="row justify-content-md-center">
+        <h1>Iterasi <%= tables.length+1 %> </h1>
+        <table class="table">
+          <thead>
+            <tr>
+            <% for (let index = 0; index < jml.length; index++) { %>
+                <th scope="col">X<%= index+1 %></th>    
+            <% } %>
+            <% for (let index = 0; index < jml_kendala.length; index++) { %>
+              <th scope="col">S<%= index+1 %></th>    
+          <% } %>
+              <th>Z</th>
+              <th>RHS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             
+            <% for (let index = 0; index < finaltable.length; index++) { %>
+              <tr>
+                <% for (let a = 0; a < finaltable[index].length; a++) { %>                             
+                  <th scope="col"><%= finaltable[index][a] %></th>    
+               <% } %>
+            </tr>    
+           <% } %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-body">
+              <h1>Hasil Optimum</h1>      
+              
+                <h2 style="margin-bottom: 100px;">Optimum : <%= finaltable[finaltable.length-1][finaltable[finaltable.length-1].length-1] %> </h2>
+                
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</body>
+</html>

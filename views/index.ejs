@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <form action="/solve" method="post">
+
+                  <label for="">Berapa Banyak Product Anda ? </label>
+                  <div class="input-group mb-3">
+                    <input type="number" class="form-control" min="3" name="jp" id="jp" placeholder="Jumlah Produk" aria-label="Jumlah Product" aria-describedby="button-addon2" required>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="button-produk">Buat</button>
+                    </div>
+                  </div>
+                <label for="">Berapa Banyak Kendala ? </label>
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control" id="jk" min="1" name="jk"  placeholder="Jumlah Kendala" aria-label="Jumlah Kendala" aria-describedby="button-addon2" required>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-kendala">Buat</button>
+                  </div>
+                </div>
+                <label for="">Masukan Nilai Z </label>
+                <div class="input-group mb-3 nilai-produk" id="nilai-produk">
+                
+                  
+                </div>
+
+                <label for="">Masukan Nilai Kendala </label>
+                <div class="container" id="kendala">
+                  
+                  
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Optimalkan</button>
+              </div>
+            </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    let jmlp = 0;
+    let jmlk = 0;
+    let inp = []
+    var ink = []
+    let contink;
+    let nk = 1
+    let setJmlProduk = ()=>{
+      jmlp = document.getElementById("jp").value
+      for(var i = 0; i <jmlp; i++){
+        inp.push('<input type="number" step="0.01" class="form-control" placeholder="X'+(i+1)+'" name="nilaiP[]" required>')
+        ink.push('<input type="number"  step="0.01" class="form-control" placeholder="X'+(i+1)+'" name="nilaik[]" required>')
+      }
+    }
+
+    let setJmlKendala = ()=>{
+      contink = []
+      jmlk = document.getElementById("jk").value
+      var x = ink.toString()
+      for(var i = 0; i < jmlk; i++){
+        contink.push('<div class="input-group mb-3 " id="nilai-kendala">'+x+'<select class="form-control" name="constraint[]"><option value="<="><=</option><option value="<"><</option><option value="=" >=</option></select><input type="number" class="form-control" placeholder="Nilai" name="constant[]" required></div>')
+      }
+    }
+
+    
+    $('#button-produk').click(()=>{
+      inp = []  
+      ink  = []
+      setJmlProduk()
+      setJmlKendala()
+        $('#nilai-produk').html(inp)
+        $('#kendala').html(contink)
+      })
+
+    $('#button-kendala').click(()=>{
+      setJmlKendala()
+      $('#kendala').html(contink) 
+    })
+
+  </script>
+</body>
+</html>
+
